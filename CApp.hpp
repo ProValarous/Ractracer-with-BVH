@@ -9,19 +9,16 @@ class CApp
         SDL_Renderer *pRenderer;
 
     public:
-    int OnExecute;
         CApp();
 
         bool OnInit();
-        
         int OnExecute();
-
         void OnEvent(SDL_Event *event);
         void OnLoop();
         void OnRender();
         void OnExit();
         
-        CApp();
+    
 
 
 
