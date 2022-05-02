@@ -1,5 +1,5 @@
 #include "CApp.hpp"
-
+#include <iostream>
 
 CApp::CApp()
 {
@@ -65,8 +65,8 @@ void CApp::OnLoop()
 void CApp::OnRender()
 {
     //Set bkground colour to white
-    SDL_SetRenderDrawColor(pRenderer,255,255,255,255);
-    SDL_RenderClear(pRenderer);
+    std::cout<<SDL_SetRenderDrawColor(pRenderer,0,255,0,255);
+     SDL_RenderClear(pRenderer);
 }
 
 void CApp::OnExit()
