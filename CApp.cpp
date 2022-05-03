@@ -1,5 +1,6 @@
 #include "CApp.hpp"
 #include <iostream>
+#include<cmath>
 
 CApp::CApp()
 {
@@ -21,6 +22,25 @@ bool CApp::OnInit()
     if (pWindow != NULL)
     {
         pRenderer = SDL_CreateRenderer(pWindow,-1,0);
+
+        //Intialize the dsImage Instance
+        m_image.Initializer(400,400,pRenderer);
+
+        
+        //!!!---Some fun colour testing---!!!
+        for (int x=0; x < 400 ; ++x)
+        {
+            for (int y=0; y < 400 ; ++y)
+            {
+                double red = (static_cast<double>(x)/400.0) * 255.0;
+                double green = (static_cast<double>(y)/400.0) * 255.0;
+                double blue = (static_cast<double>(10*sin(x+y))/400.0) * 255.0;
+                m_image.SetPixel(x,y,red,green,blue);  
+            }
+        }
+
+
+
     }
     else
     {
@@ -44,7 +64,7 @@ int CApp::OnExecute()
         {
             OnEvent(&event);
         }
-        OnLoop();
+        //OnLoop();
         OnRender();
     }    
 }
@@ -65,8 +85,16 @@ void CApp::OnLoop()
 void CApp::OnRender()
 {
     //Set bkground colour to white
-    std::cout<<SDL_SetRenderDrawColor(pRenderer,0,255,0,255);
-     SDL_RenderClear(pRenderer);
+    SDL_SetRenderDrawColor(pRenderer,255,0,255,255);
+    SDL_RenderClear(pRenderer);
+
+    
+    //Display the image
+    m_image.Display();
+
+    //Show the results
+    SDL_RenderPresent(pRenderer);
+
 }
 
 void CApp::OnExit()

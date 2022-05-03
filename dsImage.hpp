@@ -6,6 +6,7 @@ class dsImage
 {
     private:
         Uint32 ConvertColor(const double red,const double green,const double blue);
+        
         void InitTexture();
 
         //Vectors to store image
