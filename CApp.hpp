@@ -22,9 +22,5 @@ class CApp
         void OnLoop();
         void OnRender();
         void OnExit();
-        
-    
-
-
 
 };
