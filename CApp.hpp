@@ -3,6 +3,7 @@
 #include "./dsImage.hpp"
 #include "./scene.hpp"
 #include "ray.hpp"
+#include "./camera.hpp"
 
 class CApp
 {
@@ -17,6 +18,8 @@ class CApp
 
         //Create an instance of the scene
         dsRT::Scene m_scene;
+
+        void PrintVector(const qbVector<double> &inputVector);
 
 
     public:
