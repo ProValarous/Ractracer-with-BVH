@@ -8,7 +8,7 @@
 //     imageLoop(72, 640, 480);
 // }
 
-
+#pragma once
 #include "CApp.hpp"
 
 int main(int argc, char* argv[])

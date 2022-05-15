@@ -1,5 +1,8 @@
+#pragma once
 #include <SDL.h>
 #include "./dsImage.hpp"
+#include "./scene.hpp"
+#include "ray.hpp"
 
 class CApp
 {
@@ -11,6 +14,9 @@ class CApp
 
         //Making an instance of a class dsImage to store image
         dsImage m_image;
+
+        //Create an instance of the scene
+        dsRT::Scene m_scene;
 
 
     public:

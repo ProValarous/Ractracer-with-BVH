@@ -27,17 +27,17 @@ bool CApp::OnInit()
         m_image.Initializer(400,400,pRenderer);
 
         
-        //!!!---Some fun colour testing---!!!
-        for (int x=0; x < 400 ; ++x)
-        {
-            for (int y=0; y < 400 ; ++y)
-            {
-                double red = (static_cast<double>(x)/400.0) * 255.0;
-                double green = (static_cast<double>(y)/400.0) * 255.0;
-                double blue = (static_cast<double>(10*sin(x+y))/400.0) * 255.0;
-                m_image.SetPixel(x,y,red,green,blue);  
-            }
-        }
+        // //!!!---Some fun colour testing---!!!
+        // for (int x=0; x < 400 ; ++x)
+        // {
+        //     for (int y=0; y < 400 ; ++y)
+        //     {
+        //         double red = (static_cast<double>(x)/400.0) * 255.0;
+        //         double green = (static_cast<double>(y)/400.0) * 255.0;
+        //         double blue = (static_cast<double>(10*sin(x+y))/400.0) * 255.0;
+        //         m_image.SetPixel(x,y,red,green,blue);  
+        //     }
+        // }
 
 
 
@@ -88,6 +88,8 @@ void CApp::OnRender()
     SDL_SetRenderDrawColor(pRenderer,255,0,255,255);
     SDL_RenderClear(pRenderer);
 
+    // Render the scene
+    m_scene.Render(m_image);
     
     //Display the image
     m_image.Display();

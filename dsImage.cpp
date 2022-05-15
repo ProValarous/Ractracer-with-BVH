@@ -129,7 +129,14 @@ void dsImage::Display()
     SDL_RenderCopy(m_pRenderer,m_pTexture, &srcRect ,&bounds);
 }
 
-
-
+// Function to retutn dimension
+int dsImage::GetxSize()
+{
+    return m_xSize;
+}
+int dsImage::GetySize()
+{
+    return m_ySize;
+}
 
 

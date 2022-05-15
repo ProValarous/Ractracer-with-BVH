@@ -1,3 +1,4 @@
+#pragma once
 #include<string>
 #include<vector>
 #include<SDL.h>
@@ -32,6 +33,10 @@ class dsImage
 
         //function to display Image.
         void Display();
+
+        // Function to retutn dimension
+        int GetxSize();
+        int GetySize();
 
 
 };
