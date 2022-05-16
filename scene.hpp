@@ -1,0 +1,30 @@
+#pragma once
+#ifndef SCENE_H
+#define SCENE_H
+
+#include <vector>
+#include <SDL2/SDL.h>
+#include "dsImage.hpp"
+#include "camera.hpp"
+#include "sphere.hpp"
+
+namespace dsRT
+{
+    class Scene
+    {
+        public:
+            Scene(); // Defualt constructor
+
+            bool Render(dsImage &outputImage); // Function that performs rendering
+
+        private:
+            dsRT::Camera m_camera; // Create out camera
+
+            dsRT::Sphere m_sphere; // A Unit sphere
+    };
+    
+} // namespace dsRT
+
+#endif
+
+
