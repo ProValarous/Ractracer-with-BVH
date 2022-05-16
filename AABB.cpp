@@ -1,5 +1,59 @@
 #include "AABB.hpp"
 
+
+// #include <vector>
+
+// // Particle radius.
+// double radius = 1.0;
+
+// // Set the particle position.
+// std::vector<double> position({10, 10});
+
+// // Compute lower and upper AABB bounds.
+// std::vector<double> lowerBound({position[0] - radius, position[1] - radius});
+// std::vector<double> upperBound({position[0] + radius, position[1] + radius});
+
+// // Create the AABB.
+// aabb::AABB aabb(lowerBound, upperBound);
+
+// // Fattening factor.
+// double fatten = 0.1;
+
+// // Periodicity of the simulation box.
+// std::vector<bool> periodicity({true, true});
+
+// // Size of the simulation box.
+// std::vector<double> boxSize({100, 100});
+
+// // Number of small discs.
+// unsigned int nSmall = 100;
+
+// // Number of large discs.
+// unsigned int nLarge = 10;
+
+// // Create the AABB trees.
+// aabb::Tree treeSmall(2, fatten, periodicity, boxSize, nSmall);
+// aabb::Tree treeLarge(2, fatten, periodicity, boxSize, nLarge);
+
+// // Particle radius.
+// double radius = 1.0;
+
+// // Particle index (key).
+// unsigned int index = 1;
+
+// // Set the particle position.
+// std::vector<double> position({10.0, 10.0});
+
+// // Compute lower and upper AABB bounds.
+// std::vector<double> lowerBound({position[0] - radius, position[1] - radius});
+// std::vector<double> upperBound({position[0] + radius, position[1] + radius});
+
+// // Insert particle into the tree.
+// tree.insertParticle(index, position, lowerBound, upperBound);
+
+
+
+
 namespace aabb
 {
     AABB::AABB()
