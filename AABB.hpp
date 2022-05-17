@@ -143,6 +143,8 @@ namespace aabb
         bool isLeaf() const;
     };
 
+        /* ############# !!!! FALTU STUFF AHEAD !!!! ########## */
+
     /*! \brief The dynamic AABB tree.
         The dynamic AABB tree is a hierarchical data structure that can be used
         to efficiently query overlaps between objects of arbitrary shape and
@@ -150,6 +152,9 @@ namespace aabb
         periodic and non-periodic boxes, as well as boxes with partial
         periodicity, e.g. periodic along specific axes.
      */
+
+
+    /* ############# !!!! FALTU STUFF AHEAD !!!! ########## */
     class Tree
     {
     public:

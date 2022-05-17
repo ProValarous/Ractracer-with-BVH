@@ -160,6 +160,8 @@ namespace aabb
         return (left == NULL_NODE);
     }
 
+    /* ############# !!!! FALTU STUFF AHEAD !!!! ########## */
+
     Tree::Tree(unsigned int dimension_,
                double skinThickness_,
                unsigned int nParticles,
