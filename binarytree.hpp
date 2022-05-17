@@ -1,23 +1,26 @@
+/*
 #include <SDL.h>
-#include "AABB.hpp"
+#include "node.hpp"
 
-struct Node{
+struct Node
+{
     Node *left;
     Node *right;
-    aabb::AABB AABBdata;
+    BoundingBox *box;
     bool isLeaf = true;
 };
 
 class BinaryTree
 {
     private:
-        Node *root;
+        
     
     public:
+        Node *root;
 
         BinaryTree();
 
-        void AddNode(Node *newNode, char LR);
+        void AddNode(Node *newNode, Node *parentNode,char LR);
 
         void DeleteNode(Node *node);
 
@@ -29,3 +32,5 @@ class BinaryTree
 
 
 };
+
+*/

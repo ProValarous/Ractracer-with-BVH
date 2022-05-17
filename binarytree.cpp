@@ -1,3 +1,5 @@
+/*
+
 #include "binarytree.hpp"
 #include <cmath>
 #include <stack>
@@ -7,19 +9,19 @@ BinaryTree::BinaryTree()
     root = nullptr;
 }
 
-void BinaryTree::AddNode(Node *newNode, char LR)
+void BinaryTree::AddNode(Node *newNode, Node *parentNode, char LR)
 {
     if(LR = 'R')
     {
-        root->right = newNode;
+        parentNode->right = newNode;
     }
     else if(LR = 'L')
     {
-        root->left = newNode;
+        parentNode->left = newNode;
     }
     else
     {
-        throw std::invalid_argument("[ERROR] : arg : LR must be a char R or L");
+        //throw std::invalid_argument("[ERROR] : arg : LR must be a char R or L");
     }
 }
 
@@ -47,3 +49,6 @@ int BinaryTree::height(Node *u)
     }
     return 1 + std::max(height(u->left), height(u->right));
 }
+
+
+*/
