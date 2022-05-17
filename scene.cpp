@@ -10,13 +10,52 @@ dsRT::Scene::Scene() // constructor
     m_camera.set_aspect_ratio(16.0 / 9.0);
     m_camera.UpdateCameraGeometry();
 
+
     // Construct our objects here
 
     m_objectList.push_back(std::make_shared<dsRT::Sphere> (dsRT::Sphere()));
+    m_objectList.push_back(std::make_shared<dsRT::Sphere> (dsRT::Sphere()));
+    m_objectList.push_back(std::make_shared<dsRT::Sphere> (dsRT::Sphere()));
+
+    //tranformations
+    dsRT::Transform testMatrix1, testMatrix2, testMatrix3;
+	testMatrix1.SetTransform(qbVector<double>{std::vector<double>{-1.5, 0.0, 0.0}},
+					qbVector<double>{std::vector<double>{0.0, 0.0, 0.0}},
+					qbVector<double>{std::vector<double>{0.7, 0.7, 0.7}});
+
+    m_RADobject.push_back(std::vector<double>{-1.5, 0.0, 0.0});
+														
+	testMatrix2.SetTransform(qbVector<double>{std::vector<double>{0.0, 0.0, 0.0}},
+					qbVector<double>{std::vector<double>{0.0, 0.0, 0.0}},
+					qbVector<double>{std::vector<double>{0.7, 0.7, 0.7}});
+
+    m_RADobject.push_back(std::vector<double>{0.0, 0.0, 0.0});
+														
+	testMatrix3.SetTransform(qbVector<double>{std::vector<double>{1.5, 0.0, 0.0}},
+					qbVector<double>{std::vector<double>{0.0, 0.0, 0.0}},
+					qbVector<double>{std::vector<double>{0.7, 0.7, 0.7}});
+    
+    m_RADobject.push_back(std::vector<double>{1.5, 0.0, 0.0});
+
+														
+	m_objectList.at(0) -> SetTransformMatrix(testMatrix1);
+	m_objectList.at(1) -> SetTransformMatrix(testMatrix2);
+	m_objectList.at(2) -> SetTransformMatrix(testMatrix3);
+
+    // Assigne colors 
+    // m_objectList.at(0) -> m_baseColor = qbVector<double>{std::vector<double>{64.0, 128.0, 200.0}};
+	// m_objectList.at(1) -> m_baseColor = qbVector<double>{std::vector<double>{255.0, 128.0, 0.0}};
+	// m_objectList.at(2) -> m_baseColor = qbVector<double>{std::vector<double>{255.0, 200.0, 0.0}};
+
+    m_objectList.at(0) -> m_baseColor = qbVector<double>{std::vector<double>{255.0, 0.0, 0.0}};
+	m_objectList.at(1) -> m_baseColor = qbVector<double>{std::vector<double>{0.0, 255.0, 0.0}};
+	m_objectList.at(2) -> m_baseColor = qbVector<double>{std::vector<double>{0.0, 0.0, 255.0}};
+
 
     // Construct our light sources here
     m_lightList.push_back(std::make_shared<dsRT::PointLight> (dsRT::PointLight()));
 	// m_lightList.at(0) -> m_location = qbVector<double> {std::vector<double> {5.0, -10.0, 5.0}};
+    // m_lightList.at(0) -> m_location = qbVector<double> {std::vector<double> {5.0, -10.0, -5.0}};
     m_lightList.at(0) -> m_location = qbVector<double> {std::vector<double> {0.0, -10.0, 0.0}};
 	m_lightList.at(0) -> m_color = qbVector<double> {std::vector<double> {255.0, 255.0, 255.0}};
 }
@@ -27,7 +66,6 @@ bool dsRT::Scene::Render(dsImage &outputImage)
     int xSize = outputImage.GetXSize();
     int ySize = outputImage.GetYSize();
 
-    /*--- Integrate BVH here ---*/
 
     // Loop over each pixel
 
@@ -51,6 +89,7 @@ bool dsRT::Scene::Render(dsImage &outputImage)
             // Generate the ray for this pixel.
             m_camera.GenerateRay(normX, normY, cameraRay);
 
+            /*--- Integrate BVH here ---*/
             // Test if we have a valid intersection.
             for (auto currentObject : m_objectList)
             {
@@ -81,16 +120,19 @@ bool dsRT::Scene::Render(dsImage &outputImage)
 
                     if (validIllum)
                     {
-                        outputImage.SetPixel(x, y, 255.0 * intensity, 0.0, 0.0);
+                        // outputImage.SetPixel(x, y, 255.0 * intensity, 0.0, 0.0);
+                        outputImage.SetPixel(x, y,	localColor.GetElement(0) * intensity,
+										            localColor.GetElement(1) * intensity,
+										            localColor.GetElement(2) * intensity);
                     }
                     else
                     {
-                        outputImage.SetPixel(x, y, 0.0, 0.0, 0.0);
+                        // outputImage.SetPixel(x, y, 0.0, 0.0, 0.0);
                     }
                 }
                 else
                 {
-                    outputImage.SetPixel(x, y, 0.0, 0.0, 0.0);
+                    // outputImage.SetPixel(x, y, 0.0, 0.0, 0.0);
                 }
             }
         }

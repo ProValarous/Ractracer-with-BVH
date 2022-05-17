@@ -1,6 +1,7 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 #include "object.hpp"
+#include "transform.hpp"
 
 
 namespace dsRT
@@ -14,7 +15,7 @@ namespace dsRT
 			virtual ~Sphere() override;
 			
 			// Override the function to test for intersections.
-			virtual bool TestIntersection(const dsRT::Ray &castRay, qbVector<double> &intPoint, qbVector<double> &localNormal, qbVector<double> &localColor);
+			virtual bool TestIntersection(const dsRT::Ray &castRay, qbVector<double> &intPoint, qbVector<double> &localNormal, qbVector<double> &localColor) override;
     };
 } // namespace dsRT
 

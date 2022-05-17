@@ -3,6 +3,7 @@
 
 #include "./qbLinAlg/qbVector.h"
 #include "ray.hpp"
+#include "transform.hpp"
 
 
 namespace dsRT
@@ -23,6 +24,12 @@ namespace dsRT
             
 			// The base colour of the object.
 			qbVector<double> m_baseColor {3};
+			
+			// The geometric transform applied to the object.
+			dsRT::Transform m_transformMatrix;
+
+
+			void SetTransformMatrix(const dsRT::Transform &tranfromMatrix);
 	};
 }
 

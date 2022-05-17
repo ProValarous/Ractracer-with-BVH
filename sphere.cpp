@@ -13,16 +13,22 @@ dsRT::Sphere::~Sphere()
 
 bool dsRT::Sphere::TestIntersection(const dsRT::Ray &castRay, qbVector<double> &intPoint, qbVector<double> &localNormal, qbVector<double> &localColor)
 {
-    qbVector<double> vhat = castRay.m_lab;
+    
+    // Copy the ray and apply the backwards transform.
+	dsRT::Ray bckRay = m_transformMatrix.Apply(castRay, false);
+    
+    qbVector<double> vhat = bckRay.m_lab;
     vhat.Normalize();
 
     double a = 1.0;
 
-    double b = 2.0 * qbVector<double>::dot(castRay.m_point1,vhat);
+    double b = 2.0 * qbVector<double>::dot(bckRay.m_point1,vhat);
 
-    double c = qbVector<double>::dot(castRay.m_point1, castRay.m_point1) - 1.0; 
+    double c = qbVector<double>::dot(bckRay.m_point1, bckRay.m_point1) - 1.0; 
 
     double intersect = (b*b) - 4.0 * a * c;
+
+    qbVector<double> poi;
 
     if (intersect > 0.0)
 	{
@@ -41,16 +47,23 @@ bool dsRT::Sphere::TestIntersection(const dsRT::Ray &castRay, qbVector<double> &
 			// Determine which point of intersection was closest to the camera.
 			if (t1 < t2)
 			{
-				intPoint = castRay.m_point1 + (vhat * t1);
+				poi = bckRay.m_point1 + (vhat * t1);
 			}
 			else
 			{
-				intPoint = castRay.m_point1 + (vhat * t2);
+				poi = bckRay.m_point1 + (vhat * t2);
 			}
-            // compute local normal
 
-            localNormal = intPoint;
-            localNormal.Normalize();
+            intPoint =  m_transformMatrix.Apply(poi,true);
+
+            // compute local normal
+			qbVector<double> objOrigin = qbVector<double>{std::vector<double>{0.0, 0.0, 0.0}};
+			qbVector<double> newObjOrigin = m_transformMatrix.Apply(objOrigin, true);
+			localNormal = intPoint - newObjOrigin;
+			localNormal.Normalize();
+			
+			// Return the base color.
+			localColor = m_baseColor;
 		}
 		
 		return true;

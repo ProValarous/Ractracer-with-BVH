@@ -26,3 +26,9 @@ bool dsRT::Object::CloseEnough(const double f1, const double f2)
 {
 	return fabs(f1-f2) < EPSILON;
 }
+
+
+void dsRT::Object::SetTransformMatrix(const dsRT::Transform &transformMatrix)
+{
+	m_transformMatrix = transformMatrix;
+}

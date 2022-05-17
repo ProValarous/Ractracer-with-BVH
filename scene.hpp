@@ -25,6 +25,7 @@ namespace dsRT
 
             // The list of objects in the scene.
 			std::vector<std::shared_ptr<dsRT::Object>> m_objectList;
+            std::vector<std::vector<double>> m_RADobject;
 
 
             // The list of lights in the scene.
