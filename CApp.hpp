@@ -2,7 +2,7 @@
 #ifndef CAPP_H
 #define CAPP_H
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "./dsImage.hpp"
 #include "./scene.hpp"
 #include "./camera.hpp"
