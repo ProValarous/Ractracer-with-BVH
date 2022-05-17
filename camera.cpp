@@ -116,7 +116,7 @@ void dsRT::Camera::UpdateCameraGeometry()
     m_projectionScreenV = qbVector<double>::cross(m_projectionScreenU, m_alignmentVector); // Compute V vector
     m_projectionScreenV.Normalize();
 
-    m_projectionScreenCenter = m_cameraPosition + (m_cameraLength * m_alignmentVector); // COmpute position of center of the camera
+    m_projectionScreenCenter = m_cameraPosition + (m_cameraLength * m_alignmentVector); // Compute position of center of the camera
 
     m_projectionScreenU = m_projectionScreenU * m_cameraHorizontalSize;
     m_projectionScreenV = m_projectionScreenV * (m_cameraHorizontalSize/m_cameraAspectRatio);

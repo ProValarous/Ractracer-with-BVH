@@ -17,14 +17,18 @@ bool CApp::OnInit()
 		return false;
 	}
 	
-	pWindow = SDL_CreateWindow("Rays do be tracing", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_SHOWN);
+    int screenHDim  = 1024; 
+    int screenVDim  = 576;
+    int aspectRatio = screenHDim/screenVDim;
+    std::cout<<"The screen dim is : "<<screenHDim<<" x "<<screenVDim<<std::endl;
+	pWindow = SDL_CreateWindow("Rays do be tracing", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenHDim , screenVDim , SDL_WINDOW_SHOWN);
 	
 	if (pWindow != NULL)
 	{
 		pRenderer = SDL_CreateRenderer(pWindow, -1, 0);
 		
 		// Intialize the qbImage instance.
-		m_image.Initialize(1280, 720, pRenderer);
+		m_image.Initialize(screenHDim , screenVDim , pRenderer);
 		
 		// Set the background color to white.
 		SDL_SetRenderDrawColor(pRenderer, 255, 255, 255, 255);
