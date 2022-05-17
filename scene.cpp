@@ -16,8 +16,8 @@ dsRT::Scene::Scene() // constructor
 
     // Construct our light sources here
     m_lightList.push_back(std::make_shared<dsRT::PointLight> (dsRT::PointLight()));
-	m_lightList.at(0) -> m_location = qbVector<double> {std::vector<double> {5.0, -10.0, 5.0}};
-    // m_lightList.at(0) -> m_location = qbVector<double> {std::vector<double> {5.0, 1.0, 5.0}};
+	// m_lightList.at(0) -> m_location = qbVector<double> {std::vector<double> {5.0, -10.0, 5.0}};
+    m_lightList.at(0) -> m_location = qbVector<double> {std::vector<double> {0.0, -10.0, 0.0}};
 	m_lightList.at(0) -> m_color = qbVector<double> {std::vector<double> {255.0, 255.0, 255.0}};
 }
 
