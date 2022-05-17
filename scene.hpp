@@ -7,6 +7,7 @@
 #include "dsImage.hpp"
 #include "camera.hpp"
 #include "sphere.hpp"
+#include "pointlight.hpp"
 
 namespace dsRT
 {
@@ -20,7 +21,14 @@ namespace dsRT
         private:
             dsRT::Camera m_camera; // Create out camera
 
-            dsRT::Sphere m_sphere; // A Unit sphere
+            // dsRT::Sphere m_sphere; // A Unit sphere
+
+            // The list of objects in the scene.
+			std::vector<std::shared_ptr<dsRT::Object>> m_objectList;
+
+
+            // The list of lights in the scene.
+			std::vector<std::shared_ptr<dsRT::LightBase>> m_lightList;
     };
     
 } // namespace dsRT

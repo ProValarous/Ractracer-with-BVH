@@ -47,6 +47,10 @@ bool dsRT::Sphere::TestIntersection(const dsRT::Ray &castRay, qbVector<double> &
 			{
 				intPoint = castRay.m_point1 + (vhat * t2);
 			}
+            // compute local normal
+
+            localNormal = intPoint;
+            localNormal.Normalize();
 		}
 		
 		return true;

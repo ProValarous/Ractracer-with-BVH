@@ -125,7 +125,8 @@ Uint32 dsImage::ConvertColor(const double red, const double green, const double 
 	#if SDL_BYTEORDER == SDL_BIG_ENDIAN
 		Uint32 pixelColor = (r << 24) + (g << 16) + (b << 8) + 255;
 	#else
-		Uint32 pixelColor = (255 << 24) + (r << 16) + (g << 8) + b;
+		Uint32 pixelColor = (255 << 24) + (b << 16) + (g << 8) + r;
+        // Uint32 pixelColor = (255 << 24) + (r << 16) + (g << 8) + b; 
 	#endif
 	
 	return pixelColor;
