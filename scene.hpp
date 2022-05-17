@@ -3,7 +3,7 @@
 #define SCENE_H
 
 #include <vector>
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include "dsImage.hpp"
 #include "camera.hpp"
 #include "sphere.hpp"
