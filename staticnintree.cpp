@@ -1,4 +1,5 @@
 #include<vector>
+#include "sphere.hpp"
 
 using namespace std;
 
@@ -106,3 +107,64 @@ class BVH
     }
 
 };
+
+
+
+struct node
+{
+    node *left;
+    node *right;
+    BoundingSphere *sphere;
+    bool isLeaf = true;
+};
+
+class BoundingVolHeirachy
+{
+
+    public:
+
+    // BinaryTree BT;
+    node *root;
+
+    BoundingVolHeirachy()
+    {
+        node a;
+        dsRT::Sphere a1;
+        dsRT::Transform Mat1;
+        Mat1.SetTransform(qbVector<double>{std::vector<double>{-1.5, 0.0, 0.0}},
+					        qbVector<double>{std::vector<double>{0.0, 0.0, 0.0}},
+					        qbVector<double>{std::vector<double>{1.0, 1.0, 1.0}});
+        a1.SetTransformMatrix(Mat1);
+        // a.sphere->inside.push_back(a1);
+
+        node b;
+        dsRT::Sphere b1;
+        dsRT::Transform Mat2;
+        Mat2.SetTransform(qbVector<double>{std::vector<double>{0.0, 0.0, 0.0}},
+					        qbVector<double>{std::vector<double>{0.0, 0.0, 0.0}},
+					        qbVector<double>{std::vector<double>{1.0, 1.0, 1.0}});
+        b1.SetTransformMatrix(Mat2);
+
+
+        node c;
+        dsRT::Sphere c1;
+        dsRT::Transform Mat3;
+        Mat2.SetTransform(qbVector<double>{std::vector<double>{1.5, 0.0, 0.0}},
+					        qbVector<double>{std::vector<double>{0.0, 0.0, 0.0}},
+					        qbVector<double>{std::vector<double>{1.0, 1.0, 1.0}});
+        c1.SetTransformMatrix(Mat3);
+
+
+        
+    }
+
+};
+
+
+struct BoundingSphere
+{   
+    dsRT::Sphere vol;
+    std::vector<std::shared_ptr<dsRT::Object>> inside;
+};
+
+

@@ -109,12 +109,12 @@ bool dsRT::Scene::Render(dsImage &outputImage)
 
 
                     // Compute the distance between the camera and the point of intersection.
-                    double dist = (intPoint - cameraRay.m_point1).norm();
-                    if (dist > maxDist)
-                        maxDist = dist;
+                    // double dist = (intPoint - cameraRay.m_point1).norm();
+                    // if (dist > maxDist)
+                    //     maxDist = dist;
 
-                    if (dist < minDist)
-                        minDist = dist;
+                    // if (dist < minDist)
+                    //     minDist = dist;
 
                     // outputImage.SetPixel(x, y, 255.0 - ((dist - 9.0) / 0.94605) * 255.0, 0.0, 0.0);
 
